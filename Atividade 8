@@ -1,0 +1,21 @@
+// Definindo a Função de Transferência (FT)
+s = poly(0, 's');
+numerador = 0.2;
+denominador = s^2 + 0.6*s + 0.2;
+H = syslin('c', numerador, denominador);
+
+// Desenhar o Diagrama de Bode
+bode(H);
+
+// Calcular margens de ganho e fase
+[Gm, Fpc, Pm, Fgc] = g_margin(H);
+
+// Exibir as margens
+printf("Margem de Ganho (Gm): %f dB na frequência (Fpc): %f rad/s\n", Gm, Fpc);
+printf("Margem de Fase (Pm): %f graus na frequência (Fgc): %f rad/s\n", Pm, Fgc);
+
+// Adicionar títulos para clareza no gráfico de bode (se não adicionados automaticamente)
+// Se o gráfico já estiver aberto, você pode usar comandos como:
+// figure(1); // Seleciona a janela do Bode
+// subplot(2,1,1); xtitle("Diagrama de Bode - Magnitude", "Frequência (rad/s)", "Magnitude (dB)");
+// subplot(2,1,2); xtitle("Diagrama de Bode - Fase", "Frequência (rad/s)", "Fase (graus)");
