@@ -1,0 +1,10 @@
+// Definindo o numerador e o denominador da FT
+num = 0.2;
+den = poly([0.2 0.6 1], 's', 'coeff'); // s^2 + 0.6s + 0.2
+
+// Criar o sistema linear (função de transferência)
+H = syslin('c', num, den);
+
+// Plotar o LGR
+evans(H);
+xtitle("Lugar Geométrico das Raízes", "Eixo Real", "Eixo Imaginário");
