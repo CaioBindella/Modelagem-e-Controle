@@ -1,0 +1,16 @@
+// Definir a Função de Transferência (FT)
+s = poly(0, 's');
+numerador = 0.2;
+denominador = s^2 + 0.6*s + 0.2;
+H = syslin('c', numerador, denominador);
+
+// Desenhar o Diagrama de Nyquist
+nyquist(H);
+// Adicionar um título
+xtitle("Diagrama de Nyquist de H(s)", "Real", "Imaginário");
+
+// Para verificar as margens (opcional, já que g_margin já foi usado com Bode):
+// [Gm, Fpc, Pm, Fgc] = g_margin(H);
+// printf("Reconfirmando Margens:\n");
+// printf("Margem de Ganho (Gm): %f dB na frequência (Fpc): %f rad/s\n", Gm, Fpc);
+// printf("Margem de Fase (Pm): %f graus na frequência (Fgc): %f rad/s\n", Pm, Fgc);
