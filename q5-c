@@ -1,0 +1,22 @@
+// Coeficientes do polinômio do denominador
+a = [0.833, 1.499, 0.7666, 0.53];
+
+// Função que constrói a tabela de Routh-Hurwitz
+function R = routh(a)
+    n = length(a);
+    m = ceil(n / 2);
+    R = zeros(n, m);
+
+    // Primeiras duas linhas da tabela
+    R(1, :) = a(1:2:$);
+    R(2, 1:length(a(2:2:$))) = a(2:2:$);
+
+    for i = 3:n
+        for j = 1:(m - 1)
+            R(i, j) = (R(i - 1, 1) * R(i - 2, j + 1) - R(i - 2, 1) * R(i - 1, j + 1)) / R(i - 1, 1);
+        end
+    end
+endfunction
+
+// Executa a função e mostra a tabela
+R = routh(a)
